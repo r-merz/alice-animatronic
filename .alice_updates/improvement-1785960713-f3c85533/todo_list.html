@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Todo List Management</title>
+	<style>
+		padding: 20px;
+		background-color: #f0f0f0;
+	</style>
+</head>
+<body>
+	<h1>Todo List</h1>
+	<form id='todo-form'>
+		<input type='text' id='new-task' placeholder='Enter new task...'/>
+		<button id='add-task'>Add Task</button>
+	</form>
+	<ul id='tasks'></ul>
+	<script>
+		// Get the form element
+		var todoForm = document.getElementById('todo-form');
+		// Get the input field for new tasks
+		var newTaskInput = document.getElementById('new-task');
+		// Get the button to add new tasks
+		var addTaskButton = document.getElementById('add-task');
+		// Get the unordered list to display tasks
+		var taskList = document.getElementById('tasks');
+		// Function to add a new task
+		function addTask() {
+			// Create a new list item for the task
+			var listItem = document.createElement('LI');
+			// Set the text content of the list item to the new task's text
+			listItem.textContent = newTaskInput.value;
+			// Add the list item to the unordered list
+			taskList.appendChild(listItem);
+			// Clear the input field for the new task
+			newTaskInput.value = '';
+		}
+		// Function to delete a task
+		function deleteTask() {
+			// Get all list items in the unordered list
+			var listItems = taskList.children;
+			// Loop through each list item
+			for (var i = 0; i < listItems.length; i++) {
+				// If the user clicks on a list item, delete it
+				if (listItems[i].click) {
+					taskList.removeChild(listItems[i]);
+				}
+			}
+		}
+		// Add an event listener to the button to add new tasks
+		addTaskButton.addEventListener('click', addTask);
+		// Add an event listener to the unordered list to delete tasks
+		taskList.addEventListener('click', deleteTask);
+	</script>
+</body>
+</html>

@@ -1,0 +1,6 @@
+2026/08/12-15:58:55.336 24f5ea9 Reusing MANIFEST /Users/mercyrangel-lopez/Desktop/alice/.alice_research_chrome/Default/Local Storage/leveldb/MANIFEST-000001
+2026/08/12-15:58:55.345 24f5ea9 Recovering log #20
+2026/08/12-15:58:55.347 24f5ea9 Reusing old log /Users/mercyrangel-lopez/Desktop/alice/.alice_research_chrome/Default/Local Storage/leveldb/000020.log 
+2026/08/12-15:59:17.535 24f5ea9 Level-0 table #24: started
+2026/08/12-15:59:17.546 24f5ea9 Level-0 table #24: 58715 bytes OK
+2026/08/12-15:59:17.550 24f5ea9 Delete type=0 #20

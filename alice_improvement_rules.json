@@ -1,0 +1,6 @@
+[
+  "When the user requests HTML only, do not add Python or backend files.",
+  "Standalone HTML must begin with <!DOCTYPE html> and contain complete head and body elements.",
+  "DOM event handlers must act on event.target or closest(), not test whether an element's click method exists.",
+  "Form submit handlers must call preventDefault() when submission must remain in the current page."
+]

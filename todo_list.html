@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Alice Todo List</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            min-height: 100%;
+            margin: 0;
+        }
+
+        body {
+            padding: 24px;
+
+            color: #f7f4ff;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    #180a2d,
+                    #070b1d
+                );
+
+            font-family:
+                Arial,
+                sans-serif;
+        }
+
+        .todo-app {
+            width: min(680px, 100%);
+            margin: 0 auto;
+            padding: 24px;
+
+            border:
+                1px solid
+                rgba(155, 225, 255, 0.28);
+
+            border-radius: 18px;
+
+            background:
+                rgba(11, 8, 32, 0.9);
+
+            box-shadow:
+                0 0 34px
+                rgba(151, 58, 220, 0.18);
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        #todo-form {
+            display: grid;
+            grid-template-columns:
+                minmax(0, 1fr)
+                auto;
+
+            gap: 10px;
+        }
+
+        #new-task {
+            min-width: 0;
+            padding: 12px;
+
+            border:
+                1px solid
+                rgba(145, 225, 255, 0.35);
+
+            border-radius: 9px;
+
+            color: white;
+
+            background:
+                rgba(3, 8, 25, 0.85);
+        }
+
+        button {
+            padding: 10px 14px;
+
+            border:
+                1px solid
+                rgba(145, 225, 255, 0.4);
+
+            border-radius: 9px;
+
+            color: white;
+
+            background:
+                rgba(96, 55, 170, 0.72);
+
+            cursor: pointer;
+        }
+
+        button:hover {
+            background:
+                rgba(120, 72, 205, 0.88);
+        }
+
+        #task-error {
+            min-height: 20px;
+            margin: 10px 0 0;
+
+            color: #ff9cab;
+            font-size: 13px;
+        }
+
+        #tasks {
+            display: grid;
+            gap: 10px;
+
+            margin: 20px 0 0;
+            padding: 0;
+
+            list-style: none;
+        }
+
+        .task-item {
+            display: grid;
+            grid-template-columns:
+                auto
+                minmax(0, 1fr)
+                auto;
+
+            align-items: center;
+            gap: 10px;
+
+            padding: 12px;
+
+            border:
+                1px solid
+                rgba(170, 105, 235, 0.25);
+
+            border-radius: 10px;
+
+            background:
+                rgba(45, 22, 78, 0.45);
+        }
+
+        .task-text {
+            overflow-wrap: anywhere;
+        }
+
+        .task-item.completed .task-text {
+            opacity: 0.55;
+            text-decoration: line-through;
+        }
+
+        .delete-task {
+            background:
+                rgba(170, 45, 75, 0.58);
+        }
+
+        .empty-state {
+            color:
+                rgba(235, 240, 255, 0.55);
+
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <main class="todo-app">
+        <h1>Todo List</h1>
+
+        <form id="todo-form">
+            <input
+                id="new-task"
+                type="text"
+                maxlength="200"
+                placeholder="Enter a new task..."
+                autocomplete="off"
+                required
+            >
+
+            <button type="submit">
+                Add Task
+            </button>
+        </form>
+
+        <p
+            id="task-error"
+            role="alert"
+            aria-live="polite"
+        ></p>
+
+        <ul id="tasks"></ul>
+    </main>
+
+    <script>
+        "use strict";
+
+        (() => {
+			let tasks = []; 
+            const STORAGE_KEY =
+                "alice.todo.tasks.v1";
+
+            const form =
+                document.getElementById(
+                    "todo-form"
+                );
+
+            const input =
+                document.getElementById(
+                    "new-task"
+                );
+
+            const taskList =
+                document.getElementById(
+                    "tasks"
+                );
+
+            const errorElement =
+                document.getElementById(
+                    "task-error"
+                );
+
+            if (
+                !form
+                || !input
+                || !taskList
+                || !errorElement
+            ) {
+                console.error(
+                    "Todo interface elements are missing."
+                );
+
+                return;
+            }
+
+            function createTaskId() {
+                if (
+                    window.crypto
+                    && typeof crypto.randomUUID
+                    === "function"
+                ) {
+                    return crypto.randomUUID();
+                }
+
+                return (
+                    Date.now().toString(36)
+                    + "-"
+                    + Math.random()
+                        .toString(36)
+                        .slice(2)
+                );
+            }
+
+            function loadTasks() {
+				try {
+					const savedValue =
+						localStorage.getItem(
+							STORAGE_KEY
+						);
+
+					if (!savedValue) {
+						return [];
+					}
+
+					const parsedValue =
+						JSON.parse(
+							savedValue
+						);
+
+					if (
+						!Array.isArray(
+							parsedValue
+						)
+					) {
+						return [];
+					}
+
+					return parsedValue
+						.filter(
+							task => (
+								task
+								&& typeof task.text
+									=== "string"
+							)
+						)
+						.map(
+							task => ({
+								id:
+									typeof task.id
+										=== "string"
+										&& task.id
+										? task.id
+										: createTaskId(),
+
+								text:
+									task.text.trim(),
+
+								completed:
+									Boolean(
+										task.completed
+									),
+							})
+						)
+						.filter(
+							task =>
+								Boolean(
+									task.text
+								)
+						);
+
+				} catch (error) {
+					console.error(
+						"Could not load tasks:",
+						error
+					);
+
+					return [];
+				}
+			}
+			
+            function saveTasks() {
+                try {
+                    localStorage.setItem(
+                        STORAGE_KEY,
+                        JSON.stringify(
+                            tasks
+                        )
+                    );
+
+                    return true;
+
+                } catch (error) {
+                    console.error(
+                        "Could not save tasks:",
+                        error
+                    );
+
+                    errorElement.textContent =
+                        "Tasks could not be saved.";
+
+                    return false;
+                }
+            }
+
+            function renderTasks() {
+                taskList.replaceChildren();
+
+                if (tasks.length === 0) {
+                    const emptyItem =
+                        document.createElement(
+                            "li"
+                        );
+
+                    emptyItem.className =
+                        "empty-state";
+
+                    emptyItem.textContent =
+                        "No tasks yet.";
+
+                    taskList.appendChild(
+                        emptyItem
+                    );
+
+                    return;
+                }
+
+                for (const task of tasks) {
+                    const item =
+                        document.createElement(
+                            "li"
+                        );
+
+                    item.className =
+                        "task-item";
+
+                    if (task.completed) {
+                        item.classList.add(
+                            "completed"
+                        );
+                    }
+
+                    item.dataset.taskId =
+                        task.id;
+
+                    const checkbox =
+                        document.createElement(
+                            "input"
+                        );
+
+                    checkbox.type =
+                        "checkbox";
+
+                    checkbox.checked =
+                        task.completed;
+
+                    checkbox.className =
+                        "task-toggle";
+
+                    checkbox.setAttribute(
+                        "aria-label",
+                        `Mark ${task.text} complete`
+                    );
+
+                    const text =
+                        document.createElement(
+                            "span"
+                        );
+
+                    text.className =
+                        "task-text";
+
+                    text.textContent =
+                        task.text;
+
+                    const deleteButton =
+                        document.createElement(
+                            "button"
+                        );
+
+                    deleteButton.type =
+                        "button";
+
+                    deleteButton.className =
+                        "delete-task";
+
+                    deleteButton.textContent =
+                        "Delete";
+
+                    deleteButton.setAttribute(
+                        "aria-label",
+                        `Delete ${task.text}`
+                    );
+
+                    item.append(
+                        checkbox,
+                        text,
+                        deleteButton
+                    );
+
+                    taskList.appendChild(
+                        item
+                    );
+                }
+            }
+
+            function addTask(
+				taskText
+			) {
+				const normalizedText =
+					String(
+						taskText || ""
+					).trim();
+
+				if (!normalizedText) {
+					if (errorElement) {
+						errorElement.textContent =
+							"Enter a task first.";
+					}
+
+					return false;
+				}
+
+				tasks.push(
+					{
+						id: createTaskId(),
+						text: normalizedText,
+						completed: false,
+					}
+				);
+
+				if (errorElement) {
+					errorElement.textContent = "";
+				}
+
+				saveTasks();
+				renderTasks();
+
+				return true;
+			}
+
+            function toggleTask(
+                taskId
+            ) {
+                const task =
+                    tasks.find(
+                        item =>
+                            item.id === taskId
+                    );
+
+                if (!task) {
+                    return;
+                }
+
+                task.completed =
+                    !task.completed;
+
+                saveTasks();
+                renderTasks();
+            }
+			function completeTaskByText(
+				requestedText
+			) {
+				const task =
+					findTaskByText(
+						requestedText
+					);
+
+				if (!task) {
+					return false;
+				}
+
+				task.completed = true;
+
+				saveTasks();
+				renderTasks();
+
+				return true;
+			}
+
+			function removeTaskByText(
+				requestedText
+			) {
+				const task =
+					findTaskByText(
+						requestedText
+					);
+
+				if (!task) {
+					return false;
+				}
+
+				tasks = tasks.filter(
+					item =>
+						item.id !== task.id
+				);
+
+				saveTasks();
+				renderTasks();
+
+				return true;
+			}
+
+			function clearCompletedTasks() {
+				tasks = tasks.filter(
+					task =>
+						!task.completed
+				);
+
+				saveTasks();
+				renderTasks();
+			}
+
+			function clearAllTasks() {
+				tasks = [];
+
+				saveTasks();
+				renderTasks();
+			}
+            function deleteTask(
+				taskId
+			) {
+				const originalLength =
+					tasks.length;
+
+				tasks = tasks.filter(
+					item =>
+						item.id !== taskId
+				);
+
+				if (
+					tasks.length
+					=== originalLength
+				) {
+					return false;
+				}
+
+				saveTasks();
+				renderTasks();
+
+				return true;
+			}
+
+            form.addEventListener(
+				"submit",
+				event => {
+					event.preventDefault();
+
+					const added =
+						addTask(
+							input.value
+						);
+
+					if (!added) {
+						input.focus();
+						return;
+					}
+
+					input.value = "";
+					input.focus();
+				}
+			);
+
+			window.addEventListener(
+				"message",
+				event => {
+					console.log(
+						"Todo iframe received message:",
+						{
+							origin: event.origin,
+							data: event.data,
+						}
+					);
+
+					const message =
+						event.data;
+
+					if (
+						!message
+						|| message.type
+							!== "alice_todo_command"
+					) {
+						return;
+					}
+
+					const command =
+						message.command || {};
+
+					const action =
+						String(
+							command.action || ""
+						).trim();
+
+					const text =
+						String(
+							command.text || ""
+						).trim();
+
+					let success = false;
+					let error = "";
+
+					try {
+						if (action == "brief"){
+							success = true; 
+						} 
+						else if (action === "add") {
+							success =
+								addTask(
+									text
+								);
+
+						} else if (
+							action === "complete"
+						) {
+							success =
+								completeTaskByText(
+									text
+								);
+
+						} else if (
+							action === "remove"
+						) {
+							success =
+								removeTaskByText(
+									text
+								);
+
+						} else if (
+							action === "clear_completed"
+						) {
+							clearCompletedTasks();
+							success = true;
+
+						} else if (
+							action === "clear_all"
+						) {
+							clearAllTasks();
+							success = true;
+
+						} else {
+							error =
+								`Unknown todo action: ${action}`;
+						}
+
+					} catch (caughtError) {
+						console.error(
+							"Todo command failed:",
+							caughtError
+						);
+
+						error =
+							String(
+								caughtError?.message
+								|| caughtError
+							);
+					}
+
+					console.log(
+						"Todo command processed:",
+						{
+							action,
+							text,
+							success,
+							error,
+						}
+					);
+
+					const resultTasks =
+						action === "brief"
+							? tasks.map(
+								task => ({
+									id:
+										String(
+											task.id || ""
+										),
+
+									text:
+										String(
+											task.text || ""
+										),
+
+									completed:
+										Boolean(
+											task.completed
+										),
+								})
+							)
+							: [];
+
+					window.parent.postMessage(
+						{
+							type:
+								"alice_todo_result",
+
+							action,
+							text,
+							success,
+							error,
+							tasks: resultTasks,
+						},
+						"*"
+					);
+				}
+			);
+
+		function normalizeTaskText(
+			value
+		) {
+			return String(
+				value || ""
+			)
+				.trim()
+				.toLocaleLowerCase();
+		}
+
+		function findTaskByText(
+			requestedText
+		) {
+			const normalizedRequest =
+				normalizeTaskText(
+					requestedText
+				);
+
+			if (!normalizedRequest) {
+				return null;
+			}
+
+			const exactMatch =
+				tasks.find(
+					task =>
+						normalizeTaskText(
+							task.text
+						)
+						=== normalizedRequest
+				);
+
+			if (exactMatch) {
+				return exactMatch;
+			}
+
+			const partialMatches =
+				tasks.filter(
+					task => {
+						const normalizedTask =
+							normalizeTaskText(
+								task.text
+							);
+
+						return (
+							normalizedTask.includes(
+								normalizedRequest
+							)
+							|| normalizedRequest.includes(
+								normalizedTask
+							)
+						);
+					}
+				);
+
+			return (
+				partialMatches.length === 1
+					? partialMatches[0]
+					: null
+			);
+		}
+		taskList.addEventListener(
+			"change",
+			event => {
+				const target =
+					event.target;
+
+				if (
+					!(
+						target
+						instanceof
+						HTMLInputElement
+					)
+				) {
+					return;
+				}
+
+				if (
+					!target.classList.contains(
+						"task-toggle"
+					)
+				) {
+					return;
+				}
+
+				const taskItem =
+					target.closest(
+						".task-item"
+					);
+
+				const taskId =
+					taskItem?.dataset.taskId;
+
+				if (!taskId) {
+					console.error(
+						"Task checkbox has no task ID."
+					);
+
+					return;
+				}
+
+				const task =
+					tasks.find(
+						item =>
+							item.id === taskId
+					);
+
+				if (!task) {
+					console.error(
+						"Task not found for checkbox:",
+						taskId
+					);
+
+					return;
+				}
+
+				task.completed =
+					target.checked;
+
+				saveTasks();
+				renderTasks();
+			}
+		);
+		taskList.addEventListener(
+			"click",
+			event => {
+				const target =
+					event.target;
+
+				if (
+					!(
+						target
+						instanceof
+						Element
+					)
+				) {
+					return;
+				}
+
+				const deleteButton =
+					target.closest(
+						".delete-task"
+					);
+
+				if (!deleteButton) {
+					return;
+				}
+
+				const taskItem =
+					deleteButton.closest(
+						".task-item"
+					);
+
+				const taskId =
+					taskItem?.dataset.taskId;
+
+				if (!taskId) {
+					console.error(
+						"Delete button has no task ID."
+					);
+
+					return;
+				}
+
+				const deleted =
+					deleteTask(
+						taskId
+					);
+
+				if (!deleted) {
+					console.error(
+						"Task could not be deleted:",
+						taskId
+					);
+				}
+			}
+		);
+	
+		tasks = loadTasks();
+		renderTasks();
+
+		console.log(
+			"Todo application initialized."
+		);
+
+		window.parent.postMessage(
+			{
+				type:
+					"alice_todo_ready",
+			},
+			"*"
+		);
+
+		})();
+    </script>
+</body>
+</html>

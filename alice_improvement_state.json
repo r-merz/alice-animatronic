@@ -1,0 +1,467 @@
+{
+  "active_proposal": {
+    "proposal_id": "improvement-1785988214-d519da42",
+    "state": "staging_approved",
+    "title": "Timer Tool",
+    "skill_name": "Timer",
+    "description": "Add a timer tool to the Alice interface, allowing users to adjust and view timers.",
+    "requested_files": [
+      "timer_tool.py"
+    ],
+    "acceptance_tests": [
+      "The timer can be adjusted using the interface.",
+      "The current time is displayed in the interface.",
+      "The timer remains functional after adjusting its value."
+    ],
+    "risks": [],
+    "requires_restart": true,
+    "created_at": 1785988214.34771,
+    "staged_files": [],
+    "diffs": {},
+    "validation": [],
+    "backup_directory": "",
+    "installed_at": null,
+    "staging_approved_at": 1785988230.0676029,
+    "last_staging_error": "ValueError: The model could not produce a valid timer_tool.py after 3 attempts. Final error: ValueError: timer_tool.py is not an executable Alice skill. Missing: can_handle(text), run(text, context). Raw output saved to /Users/mercyrangel-lopez/Desktop/alice/.alice_updates/generation_failures/timer_tool.py.txt.",
+    "last_staging_failure_at": 1785988312.435227
+  },
+  "history": [
+    {
+      "proposal_id": "improvement-1785946030-205e14e9",
+      "state": "rejected",
+      "title": "Todo List Capability",
+      "skill_name": "Todo List",
+      "description": "Add a todo list feature to Alice's capabilities, allowing users to manage tasks and reminders.",
+      "requested_files": [
+        "todo_list.py"
+      ],
+      "acceptance_tests": [
+        "User can add new tasks to the todo list",
+        "User can view and edit existing tasks in the todo list",
+        "User can mark tasks as completed in the todo list"
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785946030.6416798,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785946053.360203,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785946285.058157
+    },
+    {
+      "proposal_id": "improvement-1785946334-462cb0a9",
+      "state": "installed",
+      "title": "Todo List Capability",
+      "skill_name": "Todo List",
+      "description": "Add a todo list feature to Alice's capabilities, allowing users to manage tasks and reminders.",
+      "requested_files": [
+        "todo_list.py"
+      ],
+      "acceptance_tests": [
+        "User can add new tasks to the todo list",
+        "User can view and edit existing tasks in the todo list",
+        "Alice can remind users of upcoming deadlines"
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785946334.2410932,
+      "staged_files": [
+        "todo_list.py"
+      ],
+      "diffs": {
+        "todo_list.py": "--- a/todo_list.py\n+++ b/todo_list.py\n@@ -0,0 +1,18 @@\n+# Todo List Capability\n+\n+class TodoList:\n+    def __init__(self):\n+        self.tasks = []\n+\n+    def add_task(self, task):\n+        self.tasks.append(task)\n+\n+    def view_tasks(self):\n+        return self.tasks\n+\n+    def edit_task(self, index, new_task):\n+        self.tasks[index] = new_task\n+\n+    def remind_deadlines(self):\n+        # Implement reminder logic here\n+        pass"
+      },
+      "validation": [
+        {
+          "path": "todo_list.py",
+          "success": true,
+          "command": "python -m py_compile",
+          "output": "Python syntax check passed."
+        }
+      ],
+      "backup_directory": "/Users/mercyrangel-lopez/Desktop/alice/.alice_backups/improvement-1785946334-462cb0a9",
+      "installed_at": 1785946383.654469,
+      "staging_approved_at": 1785946354.267308,
+      "installation_approved_at": 1785946383.652192,
+      "skill_entry": {
+        "skill_id": "improvement-1785946334-462cb0a9",
+        "name": "Todo List",
+        "description": "Add a todo list feature to Alice's capabilities, allowing users to manage tasks and reminders.",
+        "changed_files": [
+          "todo_list.py"
+        ],
+        "proposal_id": "improvement-1785946334-462cb0a9",
+        "test_summary": "todo_list.py: passed",
+        "installed_at": 1785946383.654773,
+        "enabled": true
+      }
+    },
+    {
+      "proposal_id": "improvement-1785946895-9f3fd9f1",
+      "state": "rejected",
+      "title": "Integrate Todo List into Fluctlight Interface",
+      "skill_name": "Todo List Integration",
+      "description": "Add styling from todo_list.py to fluctlight.html for interactive to-do list display",
+      "requested_files": [
+        "todo_list.py",
+        "fluctlight.html"
+      ],
+      "acceptance_tests": [
+        "The to-do list is visible and interactable within the fluctlight interface.",
+        "Adding, removing, or marking tasks as completed updates the display accordingly."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785946895.829181,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785946930.930676,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785947087.3131251
+    },
+    {
+      "proposal_id": "improvement-1785947122-56040c15",
+      "state": "rejected",
+      "title": "Integrate Todo List into Fluctlight Interface",
+      "skill_name": "Todo List Integration",
+      "description": "Add styling from todo_list.py to fluctlight.html for interactive to-do list display",
+      "requested_files": [
+        "todo_list.py",
+        "fluctlight.html"
+      ],
+      "acceptance_tests": [
+        "The to-do list is displayed within the fluctlight interface",
+        "User can interact with the to-do list (e.g., add, remove items)",
+        "Todo list styling matches the existing fluctlight design"
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785947122.739378,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785947156.2309608,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785947216.55185
+    },
+    {
+      "proposal_id": "improvement-1785947287-a3f3d83b",
+      "state": "rejected",
+      "title": "Integrate To-Do List into Interface",
+      "skill_name": "Task Manager",
+      "description": "Add a to-do list feature to the Alice interface, allowing users to view and manage their tasks directly within the application.",
+      "requested_files": [
+        "fluctlight.html",
+        "script.js"
+      ],
+      "acceptance_tests": [
+        "The to-do list is displayed on the fluctlight.html page",
+        "Tasks can be added, edited, and deleted from the interface",
+        "The task list updates in real-time as tasks are modified"
+      ],
+      "risks": [
+        "Potential performance impact of loading additional JavaScript code",
+        "Risk of user confusion due to new feature"
+      ],
+      "requires_restart": true,
+      "created_at": 1785947287.652052,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785949383.959976,
+      "revised_at": 1785949357.398051,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785951237.0507362
+    },
+    {
+      "proposal_id": "improvement-1785951370-31a9279b",
+      "state": "installed",
+      "title": "Enhanced Todo List Widget",
+      "skill_name": "Todo List Management",
+      "description": "Convert the to-do list widget into a separate window with styling and functionality.",
+      "requested_files": [
+        "todo.html"
+      ],
+      "acceptance_tests": [
+        "The todo list is displayed in a separate window when clicked on the original widget.",
+        "The new window has a title bar, close button, and can be resized.",
+        "The todo list items are styled with CSS and have checkboxes for completion."
+      ],
+      "risks": [
+        "Potential styling conflicts between the new window and the main application."
+      ],
+      "requires_restart": true,
+      "created_at": 1785951370.8985522,
+      "staged_files": [
+        "todo.html"
+      ],
+      "diffs": {
+        "todo.html": "--- a/todo.html\n+++ b/todo.html\n@@ -0,0 +1 @@\n+<script src=\"https:\\/\\/very/api/styles.php?oauth4\"></script>"
+      },
+      "validation": [
+        {
+          "path": "todo.html",
+          "success": true,
+          "command": "basic-file-check",
+          "output": "No dedicated parser is configured for this file type."
+        }
+      ],
+      "backup_directory": "/Users/mercyrangel-lopez/Desktop/alice/.alice_backups/improvement-1785951370-31a9279b",
+      "installed_at": 1785955164.4051101,
+      "staging_approved_at": 1785955052.513483,
+      "revised_at": 1785955029.552089,
+      "installation_approved_at": 1785955164.4013288,
+      "skill_entry": {
+        "skill_id": "improvement-1785951370-31a9279b",
+        "name": "Todo List Management",
+        "description": "Convert the to-do list widget into a separate window with styling and functionality.",
+        "changed_files": [
+          "todo.html"
+        ],
+        "proposal_id": "improvement-1785951370-31a9279b",
+        "test_summary": "todo.html: passed",
+        "installed_at": 1785955164.405566,
+        "enabled": true
+      }
+    },
+    {
+      "proposal_id": "improvement-1785955911-bb0f35be",
+      "state": "rejected",
+      "title": "Todo List Capability",
+      "skill_name": "Todo List",
+      "description": "Add a todo list feature to Alice's capabilities, allowing users to create and manage tasks.",
+      "requested_files": [
+        "todo.html"
+      ],
+      "acceptance_tests": [
+        "User can add new tasks to the todo list",
+        "User can mark tasks as completed",
+        "Todo list is persisted across sessions"
+      ],
+      "risks": [
+        "Potential security risk if not properly validated and sanitized user input"
+      ],
+      "requires_restart": true,
+      "created_at": 1785955911.92738,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785956083.240125,
+      "revised_at": 1785956056.943945,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785960329.326714
+    },
+    {
+      "proposal_id": "improvement-1785960383-d96c6cf7",
+      "state": "rejected",
+      "title": "Todo List Skill",
+      "skill_name": "Create Todo List",
+      "description": "Add a standalone todo list HTML page with inline CSS and JavaScript for adding, completing, deleting, filtering, and saving tasks using localStorage.",
+      "requested_files": [
+        "todo_list.html"
+      ],
+      "acceptance_tests": [
+        "The todo list page loads correctly in the browser.",
+        "Tasks can be added, completed, deleted, filtered, and saved successfully.",
+        "localStorage is used to store tasks."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785960383.802525,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785960399.4264362,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785960676.509312
+    },
+    {
+      "proposal_id": "improvement-1785960713-f3c85533",
+      "state": "installed",
+      "title": "Add Todo List Skill",
+      "skill_name": "Todo List Management",
+      "description": "Create a standalone HTML document for managing tasks with inline CSS and JavaScript, using localStorage for persistence.",
+      "requested_files": [
+        "todo_list.html"
+      ],
+      "acceptance_tests": [
+        "The todo list page loads correctly in the browser.",
+        "Tasks can be added, completed, deleted, filtered, and saved to localStorage.",
+        "localStorage is used for persistence, without any backend integration."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785960713.898148,
+      "staged_files": [
+        "todo_list.html"
+      ],
+      "diffs": {
+        "todo_list.html": "--- a/todo_list.html\n+++ b/todo_list.html\n@@ -0,0 +1,55 @@\n+<!DOCTYPE html>\n+<html>\n+<head>\n+\t<title>Todo List Management</title>\n+\t<style>\n+\t\tpadding: 20px;\n+\t\tbackground-color: #f0f0f0;\n+\t</style>\n+</head>\n+<body>\n+\t<h1>Todo List</h1>\n+\t<form id='todo-form'>\n+\t\t<input type='text' id='new-task' placeholder='Enter new task...'/>\n+\t\t<button id='add-task'>Add Task</button>\n+\t</form>\n+\t<ul id='tasks'></ul>\n+\t<script>\n+\t\t// Get the form element\n+\t\tvar todoForm = document.getElementById('todo-form');\n+\t\t// Get the input field for new tasks\n+\t\tvar newTaskInput = document.getElementById('new-task');\n+\t\t// Get the button to add new tasks\n+\t\tvar addTaskButton = document.getElementById('add-task');\n+\t\t// Get the unordered list to display tasks\n+\t\tvar taskList = document.getElementById('tasks');\n+\t\t// Function to add a new task\n+\t\tfunction addTask() {\n+\t\t\t// Create a new list item for the task\n+\t\t\tvar listItem = document.createElement('LI');\n+\t\t\t// Set the text content of the list item to the new task's text\n+\t\t\tlistItem.textContent = newTaskInput.value;\n+\t\t\t// Add the list item to the unordered list\n+\t\t\ttaskList.appendChild(listItem);\n+\t\t\t// Clear the input field for the new task\n+\t\t\tnewTaskInput.value = '';\n+\t\t}\n+\t\t// Function to delete a task\n+\t\tfunction deleteTask() {\n+\t\t\t// Get all list items in the unordered list\n+\t\t\tvar listItems = taskList.children;\n+\t\t\t// Loop through each list item\n+\t\t\tfor (var i = 0; i < listItems.length; i++) {\n+\t\t\t\t// If the user clicks on a list item, delete it\n+\t\t\t\tif (listItems[i].click) {\n+\t\t\t\t\ttaskList.removeChild(listItems[i]);\n+\t\t\t\t}\n+\t\t\t}\n+\t\t}\n+\t\t// Add an event listener to the button to add new tasks\n+\t\taddTaskButton.addEventListener('click', addTask);\n+\t\t// Add an event listener to the unordered list to delete tasks\n+\t\ttaskList.addEventListener('click', deleteTask);\n+\t</script>\n+</body>\n+</html>"
+      },
+      "validation": [
+        {
+          "path": "todo_list.html",
+          "success": true,
+          "command": "basic-file-check",
+          "output": "No dedicated parser is configured for this file type."
+        }
+      ],
+      "backup_directory": "/Users/mercyrangel-lopez/Desktop/alice/.alice_backups/improvement-1785960713-f3c85533",
+      "installed_at": 1785960764.2196019,
+      "staging_approved_at": 1785960723.713645,
+      "installation_approved_at": 1785960764.216851,
+      "skill_entry": {
+        "skill_id": "improvement-1785960713-f3c85533",
+        "name": "Todo List Management",
+        "description": "Create a standalone HTML document for managing tasks with inline CSS and JavaScript, using localStorage for persistence.",
+        "changed_files": [
+          "todo_list.html"
+        ],
+        "proposal_id": "improvement-1785960713-f3c85533",
+        "test_summary": "todo_list.html: passed",
+        "installed_at": 1785960764.2199638,
+        "enabled": true
+      }
+    },
+    {
+      "proposal_id": "improvement-1785978722-c2b00f4b",
+      "state": "rejected",
+      "title": "Real-time Location Tool",
+      "skill_name": "Get Real-Time Location",
+      "description": "Create a tool to get real-time location when prompted.",
+      "requested_files": [
+        "alice_skills.json",
+        "alice_improvement_rules.json"
+      ],
+      "acceptance_tests": [
+        "The user can prompt the skill and receive their current location in real-time."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785978722.032637,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785978743.554653,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785979284.163816
+    },
+    {
+      "proposal_id": "improvement-1785979352-2f89d098",
+      "state": "installed",
+      "title": "Time and Location Skill Revision",
+      "skill_name": "Time and Location",
+      "description": "Create a new skill to report the current local time and location provided by the application, with improvements for timezone-awareness and provider handling.",
+      "requested_files": [
+        "alice_time_location_skill.py"
+      ],
+      "acceptance_tests": [
+        "The skill reports the correct current local time.",
+        "get_current_location(None) returns a structured unavailable result.",
+        "get_current_location(provider) returns the provider's non-empty value."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785979352.812702,
+      "staged_files": [
+        "alice_time_location_skill.py"
+      ],
+      "diffs": {
+        "alice_time_location_skill.py": "--- a/alice_time_location_skill.py\n+++ b/alice_time_location_skill.py\n@@ -0,0 +1,20 @@\n+import datetime\n+import pytz\n+class TimeAndLocation:\n+    def __init__(self):\n+        self.timezone = pytz.timezone('UTC')\n+\n+    def get_current_time(self):\n+        return datetime.datetime.now(self.timezone)\n+\n+    def get_current_location(self, provider=None):\n+        if provider is None:\n+            return {'status': 'unavailable'}\n+        else:\n+            # Assuming provider is a string or object with location info\n+            return {'location': provider}\n+\n+if __name__ == '__main__':\n+    time_and_location = TimeAndLocation()\n+    print(time_and_location.get_current_time())\n+    print(time_and_location.get_current_location('New York'))"
+      },
+      "validation": [
+        {
+          "path": "alice_time_location_skill.py",
+          "success": true,
+          "command": "python -m py_compile",
+          "output": "Python syntax check passed."
+        }
+      ],
+      "backup_directory": "/Users/mercyrangel-lopez/Desktop/alice/.alice_backups/improvement-1785979352-2f89d098",
+      "installed_at": 1785983430.511332,
+      "staging_approved_at": 1785983383.693044,
+      "revised_at": 1785983356.099838,
+      "installation_approved_at": 1785983430.5069818,
+      "skill_entry": {
+        "skill_id": "improvement-1785979352-2f89d098",
+        "name": "Time and Location",
+        "description": "Create a new skill to report the current local time and location provided by the application, with improvements for timezone-awareness and provider handling.",
+        "changed_files": [
+          "alice_time_location_skill.py"
+        ],
+        "proposal_id": "improvement-1785979352-2f89d098",
+        "test_summary": "alice_time_location_skill.py: passed",
+        "installed_at": 1785983430.511689,
+        "enabled": true
+      }
+    },
+    {
+      "proposal_id": "improvement-1785986009-c223c138",
+      "state": "rejected",
+      "title": "Real-Time Location Tool",
+      "skill_name": "Location Tool",
+      "description": "Create a tool to return real-time location and time information.",
+      "requested_files": [
+        "location_tool.py"
+      ],
+      "acceptance_tests": [
+        "The tool returns the current application location when no provider is supplied.",
+        "The tool does not fabricate a location when no provider is available."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785986009.104406,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785987675.494354
+    },
+    {
+      "proposal_id": "improvement-1785987685-7c29cfda",
+      "state": "rejected",
+      "title": "Real-Time Location and Time Tool",
+      "skill_name": "Location and Time",
+      "description": "A tool that returns real-time location and time based on the user's location.",
+      "requested_files": [
+        "location_tool.py"
+      ],
+      "acceptance_tests": [
+        "When the user asks 'what's the time', Alice responds with the current time in the user's location.",
+        "When the user asks 'where are we', Alice responds with the user's current location, stating where the location information comes from."
+      ],
+      "risks": [],
+      "requires_restart": true,
+      "created_at": 1785987685.605186,
+      "staged_files": [],
+      "diffs": {},
+      "validation": [],
+      "backup_directory": "",
+      "installed_at": null,
+      "staging_approved_at": 1785987703.1658099,
+      "last_staging_error": "ValueError: The model could not produce a valid location_tool.py after 3 attempts. Final error: ValueError: Python syntax error in location_tool.py: line 10, column 24: unterminated string literal (detected at line 10). Raw output saved to /Users/mercyrangel-lopez/Desktop/alice/.alice_updates/generation_failures/location_tool.py.txt.",
+      "last_staging_failure_at": 1785987763.545845,
+      "rejection_reason": "Rejected by user.",
+      "finished_at": 1785988175.0576189
+    }
+  ]
+}

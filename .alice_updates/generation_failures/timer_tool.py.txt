@@ -1,0 +1,54 @@
+=== RAW MODEL RESPONSE ===
+{
+  "path": "timer_tool.py",
+  "content": 
+"import time\n\nclass TimerTool:\n    def __init__(self):\n        self.timer = 0\n\n    def can_handle(self, text):\n        commands = ['start timer', 'stop timer', 'reset timer']\n        for command in commands:\n            if command in text.lower():\n                return True\n        return False\n\n    def run(self, text, context):\n        handled = False\n        english = {}\n        japanese = {}\n\n        if self.can_handle(text):\n            if 'start timer' in text.lower():\n                self.timer = time.time()\n                handled = True\n                english['response'] = 'Timer started.'\n                japanese['response'] = '\u30b5\u30fc\u30eb\u306f\u3057\u3089\u3002'\n            elif 'stop timer' in text.lower():\n                elapsed_time = time.time() - self.timer\n                handled = True\n                english['response'] = f'Timer stopped. Elapsed time: {elapsed_time} seconds.'\n                japanese['response'] = '\u30b5\u30fc\u30eb\u306f\u3057\u3089\u3002\u5408\u524d\u65e5\u671d\uFF1A{elapsed_time}\u5206\u7d41\u79c8\u3002'\n            elif 'reset timer' in text.lower():\n                self.timer = 0\n                handled = True\n                english['response'] = 'Timer reset.'\n                japanese['response'] = '\u30b5\u30fc\u30eb\u306f\u3057\u3089\u3002'\n        return {'handled': handled, 'english': english, 'japanese': japanese}\n\nSKILL_METADATA = {\n    'name': 'Timer Tool',\n    'description': 'A timer tool for the Alice interface.',\n    'commands': ['start timer', 'stop timer', 'reset timer'],\n    'version': '1.0'\n}\n"
+}
+
+=== EXTRACTED GENERATED CONTENT ===
+import time
+
+class TimerTool:
+    def __init__(self):
+        self.timer = 0
+
+    def can_handle(self, text):
+        commands = ['start timer', 'stop timer', 'reset timer']
+        for command in commands:
+            if command in text.lower():
+                return True
+        return False
+
+    def run(self, text, context):
+        handled = False
+        english = {}
+        japanese = {}
+
+        if self.can_handle(text):
+            if 'start timer' in text.lower():
+                self.timer = time.time()
+                handled = True
+                english['response'] = 'Timer started.'
+                japanese['response'] = 'サールはしら。'
+            elif 'stop timer' in text.lower():
+                elapsed_time = time.time() - self.timer
+                handled = True
+                english['response'] = f'Timer stopped. Elapsed time: {elapsed_time} seconds.'
+                japanese['response'] = 'サールはしら。合前日朝：{elapsed_time}分絁秈。'
+            elif 'reset timer' in text.lower():
+                self.timer = 0
+                handled = True
+                english['response'] = 'Timer reset.'
+                japanese['response'] = 'サールはしら。'
+        return {'handled': handled, 'english': english, 'japanese': japanese}
+
+SKILL_METADATA = {
+    'name': 'Timer Tool',
+    'description': 'A timer tool for the Alice interface.',
+    'commands': ['start timer', 'stop timer', 'reset timer'],
+    'version': '1.0'
+}
+
+
+=== FINAL ERROR ===
+ValueError: timer_tool.py is not an executable Alice skill. Missing: can_handle(text), run(text, context)

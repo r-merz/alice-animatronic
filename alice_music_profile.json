@@ -1,0 +1,232 @@
+{
+  "history": [
+    {
+      "timestamp": 1785931438.337595,
+      "action": "play",
+      "track_name": "Potential",
+      "artist_names": "sombr",
+      "album_name": "Potential",
+      "release_date": "2026-04-16",
+      "spotify_uri": "spotify:track:4cpHvqL4dvporE8JlQwkec"
+    },
+    {
+      "timestamp": 1785931696.38423,
+      "action": "play",
+      "track_name": "Nightcall",
+      "artist_names": "Kavinsky",
+      "album_name": "Nightcall",
+      "release_date": "2010",
+      "spotify_uri": "spotify:track:0U0ldCRmgCqhVvD6ksG63j"
+    },
+    {
+      "timestamp": 1785932323.556451,
+      "action": "next",
+      "track_name": "Nightcall - Dustin N'Guyen Remix",
+      "artist_names": "Kavinsky, Dustin N'Guyen",
+      "album_name": "Nightcall",
+      "release_date": "",
+      "spotify_uri": "spotify:track:3uEwbhvBSlE3pWT9yQfC1P"
+    },
+    {
+      "timestamp": 1785932342.939132,
+      "action": "play",
+      "track_name": "die first",
+      "artist_names": "Nessa Barrett",
+      "album_name": "young forever",
+      "release_date": "2022-10-14",
+      "spotify_uri": "spotify:track:3TfDUStpnEVIlsNlgcKQgJ"
+    },
+    {
+      "timestamp": 1785933061.903245,
+      "action": "play",
+      "track_name": "what’s wrong with me",
+      "artist_names": "Olivia Rodrigo, Robert Smith",
+      "album_name": "you seem pretty sad for a girl so in love",
+      "release_date": "2026-06-12",
+      "spotify_uri": "spotify:track:1W7023CuJrWPbD4q2Sipoh"
+    },
+    {
+      "timestamp": 1785935516.22171,
+      "action": "play",
+      "track_name": "Lejos de Ti",
+      "artist_names": "The Marías",
+      "album_name": "Submarine",
+      "release_date": "2024-05-31",
+      "spotify_uri": "spotify:track:0phzfJn8NeT1LkbqfV2peI"
+    },
+    {
+      "timestamp": 1785937045.905716,
+      "action": "play",
+      "track_name": "Casual",
+      "artist_names": "Chappell Roan",
+      "album_name": "The Rise and Fall of a Midwest Princess",
+      "release_date": "2023-09-22",
+      "spotify_uri": "spotify:track:3WSOUb3U7tqURbBSgZTrZX"
+    },
+    {
+      "timestamp": 1785941693.275689,
+      "action": "next",
+      "track_name": "Recuerdos de una Noche",
+      "artist_names": "Los Pasteles Verdes",
+      "album_name": "Éxitos Eternos",
+      "release_date": "",
+      "spotify_uri": "spotify:track:1HvnEWOy2ykY8sJa2K6y7s"
+    },
+    {
+      "timestamp": 1785942043.74586,
+      "action": "play",
+      "track_name": "Speed",
+      "artist_names": "Kali Uchis",
+      "album_name": "Por Vida",
+      "release_date": "2015-02-04",
+      "spotify_uri": "spotify:track:3HXTxdkm8vldSfVZPIQa9G"
+    },
+    {
+      "timestamp": 1785948564.875353,
+      "action": "play",
+      "track_name": "プレパレード",
+      "artist_names": "逢坂大河・櫛枝実乃梨・川嶋亜美(釘宮理恵、堀江由衣、喜多村英梨)",
+      "album_name": "プレパレード",
+      "release_date": "2008-10-22",
+      "spotify_uri": "spotify:track:0XT65K4AnBTrjq9x32aj8v"
+    },
+    {
+      "timestamp": 1785948587.330443,
+      "action": "next",
+      "track_name": "Lost my Pieces (Toradora Ost)",
+      "artist_names": "Amy B",
+      "album_name": "Lost my Pieces (Toradora Ost)",
+      "release_date": "",
+      "spotify_uri": "spotify:track:6bQzWscftz92zbAB4pxwIy"
+    },
+    {
+      "timestamp": 1785948616.584426,
+      "action": "next",
+      "track_name": "Lost My Pieces",
+      "artist_names": "ACN Music.",
+      "album_name": "Toradora!",
+      "release_date": "",
+      "spotify_uri": "spotify:track:3linPthmMZWMzTt1xV90iE"
+    },
+    {
+      "timestamp": 1785981558.14316,
+      "action": "play",
+      "track_name": "Hello?",
+      "artist_names": "Clairo, Rejjie Snow",
+      "album_name": "diary 001",
+      "release_date": "2018-05-25",
+      "spotify_uri": "spotify:track:5LpHjh0qnEkAHJJaIYuRIq"
+    },
+    {
+      "timestamp": 1785985565.993386,
+      "action": "play",
+      "track_name": "drivers license",
+      "artist_names": "Olivia Rodrigo",
+      "album_name": "SOUR",
+      "release_date": "2021-05-21",
+      "spotify_uri": "spotify:track:5wANPM4fQCJwkGd4rN57mH"
+    },
+    {
+      "timestamp": 1786547304.320056,
+      "action": "play",
+      "track_name": "ILYSMIH",
+      "artist_names": "Kali Uchis",
+      "album_name": "Sincerely,",
+      "release_date": "2025-05-09",
+      "spotify_uri": "spotify:track:4MJpGGIDRwHuWoZCddIOgM"
+    },
+    {
+      "timestamp": 1786669062.256769,
+      "action": "play",
+      "track_name": "Any Colour You Like",
+      "artist_names": "Pink Floyd",
+      "album_name": "The Dark Side of the Moon",
+      "release_date": "1973-03-01",
+      "spotify_uri": "spotify:track:6FBPOJLxUZEair6x4kLDhf"
+    },
+    {
+      "timestamp": 1786669103.832382,
+      "action": "play",
+      "track_name": "Oldies Station",
+      "artist_names": "Twenty One Pilots",
+      "album_name": "Clancy",
+      "release_date": "2024-05-24",
+      "spotify_uri": "spotify:track:7dI0mSvbdJTynUnEkWIom1"
+    },
+    {
+      "timestamp": 1786669127.605503,
+      "action": "play",
+      "track_name": "We Belong Together",
+      "artist_names": "Ritchie Valens",
+      "album_name": "Ritchie Valens",
+      "release_date": "1959",
+      "spotify_uri": "spotify:track:7caj6X6NMX3tlhWnu1du6V"
+    }
+  ],
+  "artist_counts": {
+    "sombr": 3,
+    "Kavinsky": 3,
+    "Kavinsky, Dustin N'Guyen": 1,
+    "Nessa Barrett": 3,
+    "Olivia Rodrigo, Robert Smith": 3,
+    "The Marías": 3,
+    "Chappell Roan": 3,
+    "Los Pasteles Verdes": 1,
+    "Kali Uchis": 6,
+    "逢坂大河・櫛枝実乃梨・川嶋亜美(釘宮理恵、堀江由衣、喜多村英梨)": 3,
+    "Amy B": 1,
+    "ACN Music.": 1,
+    "Clairo, Rejjie Snow": 3,
+    "Olivia Rodrigo": 3,
+    "Pink Floyd": 3,
+    "Twenty One Pilots": 3,
+    "Ritchie Valens": 3
+  },
+  "album_counts": {
+    "Potential": 3,
+    "Nightcall": 4,
+    "young forever": 3,
+    "you seem pretty sad for a girl so in love": 3,
+    "Submarine": 3,
+    "The Rise and Fall of a Midwest Princess": 3,
+    "Éxitos Eternos": 1,
+    "Por Vida": 3,
+    "プレパレード": 3,
+    "Lost my Pieces (Toradora Ost)": 1,
+    "Toradora!": 1,
+    "diary 001": 3,
+    "SOUR": 3,
+    "Sincerely,": 3,
+    "The Dark Side of the Moon": 3,
+    "Clancy": 3,
+    "Ritchie Valens": 3
+  },
+  "decade_counts": {
+    "2020s": 24,
+    "2010s": 9,
+    "2000s": 3,
+    "1970s": 3,
+    "1950s": 3
+  },
+  "track_counts": {
+    "spotify:track:4cpHvqL4dvporE8JlQwkec": 3,
+    "spotify:track:0U0ldCRmgCqhVvD6ksG63j": 3,
+    "spotify:track:3uEwbhvBSlE3pWT9yQfC1P": 1,
+    "spotify:track:3TfDUStpnEVIlsNlgcKQgJ": 3,
+    "spotify:track:1W7023CuJrWPbD4q2Sipoh": 3,
+    "spotify:track:0phzfJn8NeT1LkbqfV2peI": 3,
+    "spotify:track:3WSOUb3U7tqURbBSgZTrZX": 3,
+    "spotify:track:1HvnEWOy2ykY8sJa2K6y7s": 1,
+    "spotify:track:3HXTxdkm8vldSfVZPIQa9G": 3,
+    "spotify:track:0XT65K4AnBTrjq9x32aj8v": 3,
+    "spotify:track:6bQzWscftz92zbAB4pxwIy": 1,
+    "spotify:track:3linPthmMZWMzTt1xV90iE": 1,
+    "spotify:track:5LpHjh0qnEkAHJJaIYuRIq": 3,
+    "spotify:track:5wANPM4fQCJwkGd4rN57mH": 3,
+    "spotify:track:4MJpGGIDRwHuWoZCddIOgM": 3,
+    "spotify:track:6FBPOJLxUZEair6x4kLDhf": 3,
+    "spotify:track:7dI0mSvbdJTynUnEkWIom1": 3,
+    "spotify:track:7caj6X6NMX3tlhWnu1du6V": 3
+  },
+  "total_manual_requests": 14
+}

@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "skills": [
+    {
+      "skill_id": "improvement-1785946334-462cb0a9",
+      "name": "Todo List",
+      "description": "Add a todo list feature to Alice's capabilities, allowing users to manage tasks and reminders.",
+      "changed_files": [
+        "todo_list.py"
+      ],
+      "proposal_id": "improvement-1785946334-462cb0a9",
+      "test_summary": "todo_list.py: passed",
+      "installed_at": 1785946383.654773,
+      "enabled": true
+    },
+    {
+      "skill_id": "improvement-1785951370-31a9279b",
+      "name": "Todo List Management",
+      "description": "Convert the to-do list widget into a separate window with styling and functionality.",
+      "changed_files": [
+        "todo.html"
+      ],
+      "proposal_id": "improvement-1785951370-31a9279b",
+      "test_summary": "todo.html: passed",
+      "installed_at": 1785955164.405566,
+      "enabled": true
+    },
+    {
+      "skill_id": "improvement-1785960713-f3c85533",
+      "name": "Todo List Management",
+      "description": "Create a standalone HTML document for managing tasks with inline CSS and JavaScript, using localStorage for persistence.",
+      "changed_files": [
+        "todo_list.html"
+      ],
+      "proposal_id": "improvement-1785960713-f3c85533",
+      "test_summary": "todo_list.html: passed",
+      "installed_at": 1785960764.2199638,
+      "enabled": true
+    },
+    {
+      "skill_id": "improvement-1785979352-2f89d098",
+      "name": "Time and Location",
+      "description": "Create a new skill to report the current local time and location provided by the application, with improvements for timezone-awareness and provider handling.",
+      "changed_files": [
+        "alice_time_location_skill.py"
+      ],
+      "proposal_id": "improvement-1785979352-2f89d098",
+      "test_summary": "alice_time_location_skill.py: passed",
+      "installed_at": 1785983430.511689,
+      "enabled": true
+    }
+  ]
+}
