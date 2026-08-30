@@ -22,6 +22,9 @@ Project Status
 using a combination of Fusion 360 and Blender, programmed main core functionality of therapist model using a large language learning model (LLM) in Python with computer vision integration via OpenCV, supporting standard image identification, Japanese to English translation, speech recognition, and additional
 features. Currently working on iOS app.
 
+OpenCV Demo Video: 
+https://www.youtube.com/watch?v=Jtboe6DYDfQ
+
 Future Plans 
 - Memory synthesis to create core memories between user and Alice in the form of a mind map to show Alice's thoughts / memories in real time
 - Time/location awareness
